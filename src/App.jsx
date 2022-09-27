@@ -1,7 +1,9 @@
 import { useState } from 'react'
 import {v4 as uuidv4} from 'uuid'
+import DetailsTarefa from './components/DetailsTarefa'
 import AddTarefa from './components/AddTarefa';
 import Lista from './components/Lista';
+import { BrowserRouter as Router, Route } from "react-router-dom";
 import './styles/App.css';
 
 const App = () => {
@@ -46,16 +48,29 @@ const App = () => {
     setLista(newLista);
   }
 
+  // deletar uma tarefa
   const handleTaskDeletion = (tarefaId) => {
     const newLista = lista.filter(tarefa => tarefa.id !== tarefaId);
     setLista(newLista);
   }
 
   return (
-    <div className="App container">
-      <AddTarefa handleTaskAddition={handleTaskAddition} />
-      <Lista lista={lista} handleTaskClick={handleTaskClick} handleTaskDeletion={handleTaskDeletion}/>
-    </div>
+    <Router>
+      <div className="App container">
+        <Route 
+          path={'/'} exact render={() => (
+            <>
+              <AddTarefa handleTaskAddition={handleTaskAddition} />
+              <Lista lista={lista} handleTaskClick={handleTaskClick} handleTaskDeletion={handleTaskDeletion}/>
+            </>
+          )}
+        />
+        <Route
+          path={'/:taskTitle'} component={DetailsTarefa}
+        />
+        
+      </div>
+    </Router>
   )
 }
 

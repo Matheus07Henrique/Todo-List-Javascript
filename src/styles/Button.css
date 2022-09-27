@@ -7,4 +7,9 @@
     font-weight: bold;
     cursor: pointer;
     border: none;
+    transition: all 0.2s ease;
+}
+
+.add-button:hover{
+    background-color: #750000; 
 }
