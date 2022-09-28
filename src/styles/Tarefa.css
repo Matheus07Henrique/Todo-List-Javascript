@@ -10,6 +10,8 @@
 
 .task-title{
     cursor: pointer;
+    width: 380px;
+    word-break: break-word;
 }
 
 .remove-task, .see-details{

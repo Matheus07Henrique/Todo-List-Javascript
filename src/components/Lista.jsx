@@ -4,7 +4,8 @@ const Lista = ({lista, handleTaskClick, handleTaskDeletion}) => {
     return(
         <>
             {lista.map(task => 
-                <Tarefa 
+                <Tarefa
+                    key={task.id} 
                     task={task} 
                     handleTaskClick={handleTaskClick} 
                     handleTaskDeletion={handleTaskDeletion}
